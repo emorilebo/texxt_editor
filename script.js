@@ -79,12 +79,23 @@ let promise = new Promise((resolve, reject) => {
   }, 1000);
 });
 
-promise
+// promise
+//   .then((response) => {
+//     console.log("Here is the response after 1s: ");
+//     console.log(response);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+// console.log("this is part 1");
+
+let userPromise = fetch("https://randomuser.me/api/");
+console.log(userPromise);
+userPromise
   .then((response) => {
-    console.log("Here is the response after 1s: ");
-    console.log(response);
+    return response.json();
   })
-  .catch((error) => {
-    console.log(error);
-  });
-console.log("this is part 1");
+  .then((resData) => {
+    console.log(resData.results[0].name.first);
+  })
+  .catch((error) => {});
